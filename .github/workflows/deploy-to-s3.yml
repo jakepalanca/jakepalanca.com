@@ -1,0 +1,82 @@
+name: Deploy to S3
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  AWS_REGION: us-east-1
+  S3_BUCKET: jakepalanca.com
+  SOURCE_DIR: .
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Ensure AWS CLI is available
+        run: |
+          if ! command -v aws >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y awscli
+          fi
+
+      # ---- Delete stale files, then upload current versions ----
+      # A) Ensure removed HTML files on S3 are deleted
+      - name: Delete stale HTML on S3
+        run: |
+          aws s3 sync "$SOURCE_DIR" "s3://$S3_BUCKET" \
+            --delete \
+            --exact-timestamps \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "node_modules/*" \
+            --exclude "*" \
+            --include "*.html" \
+            --include "*.htm"
+
+      # B) Ensure removed static assets on S3 are deleted
+      - name: Delete stale static assets on S3
+        run: |
+          aws s3 sync "$SOURCE_DIR" "s3://$S3_BUCKET" \
+            --delete \
+            --exact-timestamps \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "node_modules/*" \
+            --exclude "*.html" \
+            --exclude "*.htm"
+
+      # ---- Re-upload with correct caching every run (forces updates) ----
+      # C) Re-upload static assets with long cache (replaces metadata)
+      - name: Upload static assets with long cache
+        run: |
+          aws s3 cp "$SOURCE_DIR" "s3://$S3_BUCKET" \
+            --recursive \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "node_modules/*" \
+            --exclude "*.html" \
+            --exclude "*.htm" \
+            --cache-control "public,max-age=31536000,immutable"
+
+      # D) Re-upload HTML with no-cache (so browsers always fetch latest)
+      - name: Upload HTML with no-cache
+        run: |
+          aws s3 cp "$SOURCE_DIR" "s3://$S3_BUCKET" \
+            --recursive \
+            --exclude "*" \
+            --include "*.html" \
+            --include "*.htm" \
+            --cache-control "no-cache, no-store, must-revalidate"

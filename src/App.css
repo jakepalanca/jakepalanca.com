@@ -1,38 +1,139 @@
-.App {
-  text-align: center;
+:root {
+  --bg: #1a1a1a;
+  --fg: #ffffff;
+  --c1: #61dafb;
+  --c2: #fca311;
+  --c3: #e53935;
+  --c4: #43a047;
+  --c5: #1e88e5;
+  --c6: #d81b60;
+  --c7: #f0f0f0;
+  --c8: #666;
+  --c9: #fca311;
+  --c10: #43a047;
+  --c11: #1e88e5;
+  --c12: #61dafb;
+  --c13: #d81b60;
+  --c14: #f0f0f0;
+  --c15: #ffffff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: 'Fira Code', monospace;
+  overflow: hidden; /* disable native scrollbar */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.gridwrap {
+  position: relative;
+  width: 100%; /* avoid counting scrollbar width like 100vw does */
+  height: 100vh; /* occupy viewport; no native scroll */
+  overflow-y: auto; /* use native vertical scrolling */
+  overflow-x: hidden; /* prevent stray horizontal gap on the right */
+  outline: none; /* avoid default focus ring when auto-focused */
+  scroll-snap-type: y mandatory; /* snap to row boundaries */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable; /* reserve space for scrollbar to avoid width jumps */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.measure {
+  position: absolute;
+  visibility: hidden;
+  white-space: pre;
+}
+
+.grid {
+  position: relative;
+  white-space: pre;
+  font-size: 16px;
+  line-height: 1.2;
+  cursor: auto;
+  overflow: hidden;
+  z-index: 1; /* base content layer (background + text cells) */
+}
+
+.row {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  scroll-snap-align: start;
 }
 
-.App-link {
-  color: #61dafb;
+.cell {
+  display: inline-block;
+  width: var(--ch, 1ch);
+  height: var(--lh, 1.2em);
+  flex: 0 0 var(--ch, 1ch); /* prevent flex shrink/grow from mis-sizing cells */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.fg {
+  color: var(--fg);
+}
+
+.bg {
+  color: var(--c8);
+}
+
+.b {
+  font-weight: bold;
+  color: var(--c12); /* Highlight bold text with an accent color */
+}
+
+.c1 { color: var(--c1); font-weight: bold; }
+.c2 { color: var(--c2); }
+.c3 { color: var(--c3); }
+.c4 { color: var(--c4); }
+.c5 { color: var(--c5); }
+.c6 { color: var(--c6); }
+.c7 { color: var(--c7); }
+.c8 { color: var(--c8); }
+.c9 { color: var(--c9); }
+.c10 { color: var(--c10); }
+.c11 { color: var(--c11); }
+.c12 { color: var(--c12); }
+.c13 { color: var(--c13); }
+.c14 { color: var(--c14); }
+.c15 { color: var(--c15); }
+
+/* Dimming classes */
+.d0 { color: #222; }
+.d1 { color: #444; }
+.d2 { color: #666; }
+.d3 { color: #888; }
+.d4 { color: #aaa; }
+.d5 { color: #ccc; }
+.d6 { color: #eee; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .grid {
+    font-size: 14px; /* Smaller font for mobile */
   }
-  to {
-    transform: rotate(360deg);
+
+  .gridwrap {
+    overflow-x: auto; /* Allow horizontal scrolling if content overflows */
   }
+}
+
+/* Overlay layer for interactive zones and custom cursor */
+.overlays {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none; /* let grid receive events except explicit zones */
+  z-index: 3; /* interactive zones above ASCII/background */
+}
+
+.linkzone {
+  position: absolute;
+  display: block;
+  pointer-events: auto;
+  text-decoration: none;
+}
+
+.cursorChar {
+  position: absolute;
+  width: 1ch;
+  height: 1.2em;
+  pointer-events: none;
+  z-index: 4; /* custom cursor above everything */
 }

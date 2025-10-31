@@ -1,13 +1,79 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --bg: #0a0a0b;
+  --fg: #d6d6da;
+  --muted: #7c7c84;
+  --accent: #6df;
+  --accent-2: #f6a;
+  --grid: rgba(255,255,255,0.05);
+  /* ANSI 16 palette */
+  --c0: #121212; /* black */
+  --c1: #d75f5f; /* red */
+  --c2: #5fd75f; /* green */
+  --c3: #d7d75f; /* yellow */
+  --c4: #5f87d7; /* blue */
+  --c5: #af5fd7; /* magenta */
+  --c6: #5fd7d7; /* cyan */
+  --c7: #e6e6e6; /* white */
+  --c8: #3a3a3a; /* bright black */
+  --c9: #ff6c6b; /* bright red */
+  --c10: #98be65; /* bright green */
+  --c11: #ecbe7b; /* bright yellow */
+  --c12: #51afef; /* bright blue */
+  --c13: #c678dd; /* bright magenta */
+  --c14: #46d9ff; /* bright cyan */
+  --c15: #ffffff; /* bright white */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a1c;
+    --muted: #4a4a50;
+    --accent: #06c;
+    --accent-2: #c06;
+    --grid: rgba(0,0,0,0.06);
+  }
 }
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--fg);
+  background: var(--bg);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'DejaVu Sans Mono', 'Noto Sans Mono', 'Noto Emoji', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.02em;
+  cursor: none; /* hide native cursor */
+}
+
+::selection {
+  background: var(--accent);
+  color: #000;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ANSI color helper classes */
+.c0{color:var(--c0)} .c1{color:var(--c1)} .c2{color:var(--c2)} .c3{color:var(--c3)}
+.c4{color:var(--c4)} .c5{color:var(--c5)} .c6{color:var(--c6)} .c7{color:var(--c7)}
+.c8{color:var(--c8)} .c9{color:var(--c9)} .c10{color:var(--c10)} .c11{color:var(--c11)}
+.c12{color:var(--c12)} .c13{color:var(--c13)} .c14{color:var(--c14)} .c15{color:var(--c15)}
+.b{font-weight:700}
+.dim{opacity:.6}
+
+/* Make sure interactive elements also hide cursor */
+a, button { cursor: none; }

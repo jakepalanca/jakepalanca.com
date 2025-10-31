@@ -1,0 +1,27 @@
+.two-pane-layout {
+  display: flex;
+}
+
+.pane {
+  padding: 20px;
+}
+
+.left-pane {
+  width: 40%;
+  background-color: #f0f0f0;
+}
+
+.right-pane {
+  width: 60%;
+}
+
+@media (max-width: 768px) {
+  .two-pane-layout {
+    flex-direction: column;
+  }
+
+  .left-pane,
+  .right-pane {
+    width: 100%;
+  }
+}

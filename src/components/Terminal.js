@@ -2,6 +2,9 @@ import ASCIIArt from './ASCIIArt';
 import TypingAnimation from './TypingAnimation';
 
 const Terminal = () => {
+  // Construct resume path - PUBLIC_URL defaults to empty string in Create React App
+  const publicUrl = process.env.PUBLIC_URL || '';
+  const resumePath = publicUrl ? `${publicUrl}/Jake_Palanca_Resume.pdf` : '/Jake_Palanca_Resume.pdf';
   const sections = [
     {
       command: 'whoami --verbose',
@@ -47,7 +50,11 @@ const Terminal = () => {
           <div className="command-item">
             <div className="command-content">
               <span className="command-name accent-purple">wget</span>
-              <a href="/resume.pdf" download="Jake_Palanca_Resume.pdf" className="command-link">
+              <a 
+                href={resumePath} 
+                download="Jake_Palanca_Resume.pdf" 
+                className="command-link"
+              >
                 <strong>resume.pdf</strong>
               </a>
             </div>

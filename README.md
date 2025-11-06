@@ -93,7 +93,7 @@ If you encounter "Access Denied" errors when accessing files (like `resume.pdf`)
 ## Links
 
 - **Portfolio:** [jakepalanca.com](https://jakepalanca.com)
-- **Resume:** [Download PDF](https://jakepalanca.com/resume.pdf)
+- **Resume:** [Download PDF](https://jakepalanca.com/Jake_Palanca_Resume.pdf)
 - **LinkedIn:** [linkedin.com/in/jakepalanca](https://linkedin.com/in/jakepalanca)
 
 ## About Me

@@ -8,7 +8,7 @@ on:
 env:
   AWS_REGION: us-east-1
   S3_BUCKET: jakepalanca.com
-  SOURCE_DIR: .
+  SOURCE_DIR: build
 
 jobs:
   deploy:
@@ -19,6 +19,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static site
+        run: npm run build
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -82,3 +93,9 @@ jobs:
             --include "*.html" \
             --include "*.htm" \
             --cache-control "no-cache, no-store, must-revalidate"
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}" \
+            --paths "/*"

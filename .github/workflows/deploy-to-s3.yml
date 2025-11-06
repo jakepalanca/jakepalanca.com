@@ -72,7 +72,18 @@ jobs:
             --exclude "*.htm"
 
       # ---- Re-upload with correct caching every run (forces updates) ----
-      # C) Re-upload static assets with long cache (replaces metadata)
+      # C) Re-upload PDFs with appropriate Content-Type and cache headers
+      - name: Upload PDFs with correct headers
+        run: |
+          aws s3 cp "$SOURCE_DIR" "s3://$S3_BUCKET" \
+            --recursive \
+            --exclude "*" \
+            --include "*.pdf" \
+            --content-type "application/pdf" \
+            --cache-control "public,max-age=86400" \
+            --metadata-directive REPLACE
+
+      # D) Re-upload static assets with long cache (replaces metadata)
       - name: Upload static assets with long cache
         run: |
           aws s3 cp "$SOURCE_DIR" "s3://$S3_BUCKET" \
@@ -82,9 +93,10 @@ jobs:
             --exclude "node_modules/*" \
             --exclude "*.html" \
             --exclude "*.htm" \
+            --exclude "*.pdf" \
             --cache-control "public,max-age=31536000,immutable"
 
-      # D) Re-upload HTML with no-cache (so browsers always fetch latest)
+      # E) Re-upload HTML with no-cache (so browsers always fetch latest)
       - name: Upload HTML with no-cache
         run: |
           aws s3 cp "$SOURCE_DIR" "s3://$S3_BUCKET" \

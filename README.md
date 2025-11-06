@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+# jakepalanca.com
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A terminal-themed portfolio website showcasing my projects, skills, and experience as a Computer Science student at the University of Georgia.
 
-## Available Scripts
+**Live Site:** [jakepalanca.com](https://jakepalanca.com)
 
-In the project directory, you can run:
+## About
 
-### `npm start`
+This portfolio features an interactive terminal interface that displays my background, projects, and skills through a series of animated command outputs. Built with React, it provides a unique developer-focused experience.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 🖥️ **Terminal UI** - Interactive command-line interface with typing animations
+- 📄 **Resume Download** - Direct download link for my resume
+- 🔗 **External Links** - Quick access to GitHub and LinkedIn
+- 📁 **Project Showcase** - Detailed descriptions of my key projects
+- 💻 **Skills Display** - Organized tech stack and tools
+- 🎨 **ASCII Art** - Custom terminal art
 
-### `npm test`
+## Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React** 19.2.0
+- **JavaScript**
+- **CSS3**
+- **Create React App**
 
-### `npm run build`
+## Projects Highlighted
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **SwiftCast** - Casting browser with JavaScript injection for HLS/DASH stream capture
+- **Cinema Booking Website** - Full-stack web application with Spring Boot and React
+- **TCPdump Parser** - Network trace analysis tool for hop-by-hop path reconstruction
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
 
-### `npm run eject`
+- Node.js (v14 or higher)
+- npm or yarn
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Installation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone the repository:
+```bash
+git clone https://github.com/jakepalanca/jakepalanca.com.git
+cd jakepalanca.com
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Start the development server:
+```bash
+npm start
+```
 
-## Learn More
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Build for Production
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm run build
+```
 
-### Code Splitting
+This creates an optimized production build in the `build` folder.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Deployment
 
-### Analyzing the Bundle Size
+This portfolio is deployed using **AWS CloudFront** and **S3** for a fast, scalable, and cost-effective hosting solution.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Architecture
 
-### Making a Progressive Web App
+- **Amazon S3** - Hosts the static website files (HTML, CSS, JavaScript) from the `build` folder
+- **CloudFront CDN** - Distributes content globally with edge caching for optimal performance
+- **Custom Domain** - Configured with Route 53 DNS pointing to the CloudFront distribution
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Deployment Process
 
-### Advanced Configuration
+1. Build the production bundle:
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+2. Upload the `build` folder contents to the S3 bucket configured for static website hosting
 
-### Deployment
+3. CloudFront automatically serves the cached content from edge locations worldwide, ensuring fast load times regardless of user location
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Troubleshooting
 
-### `npm run build` fails to minify
+If you encounter "Access Denied" errors when accessing files (like `resume.pdf`), check your S3 bucket policy allows CloudFront to access objects. See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions on configuring S3 bucket policies for CloudFront.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Links
+
+- **Portfolio:** [jakepalanca.com](https://jakepalanca.com)
+- **Resume:** [Download PDF](https://jakepalanca.com/resume.pdf)
+- **LinkedIn:** [linkedin.com/in/jakepalanca](https://linkedin.com/in/jakepalanca)
+
+## About Me
+
+I'm a Computer Science student at the University of Georgia (3.66 GPA, Expected Graduation: May 2026), focusing on networking-focused Java development and building distributed systems that connect and scale.
+
+Currently working on **SwiftCast**, a browser that enables casting any video content by intercepting HLS/DASH streams and relaying them to Chromecast.
+
+## License
+
+This project is private and proprietary.

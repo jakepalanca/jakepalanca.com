@@ -7,14 +7,12 @@ const TypingAnimation = ({
 }) => {
   const [currentSection, setCurrentSection] = useState(0);
   const [currentCommand, setCurrentCommand] = useState('');
-  const [isTyping, setIsTyping] = useState(true);
   const [showOutput, setShowOutput] = useState(false);
   const [completedSections, setCompletedSections] = useState([]);
   const [allComplete, setAllComplete] = useState(false);
 
   useEffect(() => {
     if (currentSection >= sections.length) {
-      setIsTyping(false);
       // Add a small delay before showing the final prompt
       const timer = setTimeout(() => {
         setAllComplete(true);

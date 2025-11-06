@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const TypingAnimation = ({ 
   sections, 
@@ -12,7 +12,7 @@ const TypingAnimation = ({
   const [allComplete, setAllComplete] = useState(false);
 
   // Generate natural typing delay with variation
-  const getTypingDelay = (char, index, previousChar, command) => {
+  const getTypingDelay = useCallback((char, index, previousChar, command) => {
     const baseSpeed = typingSpeed || 30;
     
     // After punctuation: longer pause (thinking/reading)
@@ -54,7 +54,7 @@ const TypingAnimation = ({
     }
     
     return Math.max(8, baseSpeed * 0.5 + randomVariation + hesitation);
-  };
+  }, [typingSpeed]);
 
   useEffect(() => {
     if (currentSection >= sections.length) {
@@ -105,7 +105,7 @@ const TypingAnimation = ({
       }, sectionDelay);
       return () => clearTimeout(timer);
     }
-  }, [currentCommand, currentSection, sections, typingSpeed, sectionDelay, showOutput]);
+  }, [currentCommand, currentSection, sections, typingSpeed, sectionDelay, showOutput, getTypingDelay]);
 
   return (
     <div className="typing-container">

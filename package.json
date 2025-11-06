@@ -14,13 +14,16 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "prettier": "^3.6.2",
     "yaml": "^2.8.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,css,json}\""
   },
   "eslintConfig": {
     "extends": [

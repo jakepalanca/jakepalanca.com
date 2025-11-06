@@ -13,7 +13,8 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: production
+    environment:
+      name: AWS
 
     steps:
       - name: Checkout

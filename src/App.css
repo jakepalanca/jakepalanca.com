@@ -1,139 +1,1061 @@
-:root {
-  --bg: #1a1a1a;
-  --fg: #ffffff;
-  --c1: #61dafb;
-  --c2: #fca311;
-  --c3: #e53935;
-  --c4: #43a047;
-  --c5: #1e88e5;
-  --c6: #d81b60;
-  --c7: #f0f0f0;
-  --c8: #666;
-  --c9: #fca311;
-  --c10: #43a047;
-  --c11: #1e88e5;
-  --c12: #61dafb;
-  --c13: #d81b60;
-  --c14: #f0f0f0;
-  --c15: #ffffff;
+/* Terminal Portfolio App Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: var(--bg);
-  color: var(--fg);
-  font-family: 'Fira Code', monospace;
-  overflow: hidden; /* disable native scrollbar */
-}
-
-.gridwrap {
-  position: relative;
-  width: 100%; /* avoid counting scrollbar width like 100vw does */
-  height: 100vh; /* occupy viewport; no native scroll */
-  overflow-y: auto; /* use native vertical scrolling */
-  overflow-x: hidden; /* prevent stray horizontal gap on the right */
-  outline: none; /* avoid default focus ring when auto-focused */
-  scroll-snap-type: y mandatory; /* snap to row boundaries */
+  margin: 0;
+  font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+  background-color: #000000;
+  color: #00ff00;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-overflow-scrolling: touch;
-  scrollbar-gutter: stable; /* reserve space for scrollbar to avoid width jumps */
 }
 
-.measure {
-  position: absolute;
-  visibility: hidden;
+.App {
+  min-height: 100vh;
+  background-color: #000000;
+  width: 100%;
+}
+
+/* Terminal container styling */
+.terminal-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000000;
+  padding: 64px;
+  font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+  font-size: clamp(12px, 1.8vw, 16px);
+  line-height: 1.45;
+  letter-spacing: 0.5px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Terminal content area */
+.terminal-content {
+  color: #00ff00;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ASCII Art Header */
+.ascii-header {
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  font-size: clamp(8px, 1.1vw, 12px);
+  line-height: 1.05;
+  margin-bottom: 20px;
   white-space: pre;
+  overflow-x: auto;
 }
 
-.grid {
-  position: relative;
-  white-space: pre;
-  font-size: 16px;
-  line-height: 1.2;
-  cursor: auto;
-  overflow: hidden;
-  z-index: 1; /* base content layer (background + text cells) */
-}
-
-.row {
-  display: flex;
-  scroll-snap-align: start;
-}
-
-.cell {
-  display: inline-block;
-  width: var(--ch, 1ch);
-  height: var(--lh, 1.2em);
-  flex: 0 0 var(--ch, 1ch); /* prevent flex shrink/grow from mis-sizing cells */
-}
-
-.fg {
-  color: var(--fg);
-}
-
-.bg {
-  color: var(--c8);
-}
-
-.b {
-  font-weight: bold;
-  color: var(--c12); /* Highlight bold text with an accent color */
-}
-
-.c1 { color: var(--c1); font-weight: bold; }
-.c2 { color: var(--c2); }
-.c3 { color: var(--c3); }
-.c4 { color: var(--c4); }
-.c5 { color: var(--c5); }
-.c6 { color: var(--c6); }
-.c7 { color: var(--c7); }
-.c8 { color: var(--c8); }
-.c9 { color: var(--c9); }
-.c10 { color: var(--c10); }
-.c11 { color: var(--c11); }
-.c12 { color: var(--c12); }
-.c13 { color: var(--c13); }
-.c14 { color: var(--c14); }
-.c15 { color: var(--c15); }
-
-/* Dimming classes */
-.d0 { color: #222; }
-.d1 { color: #444; }
-.d2 { color: #666; }
-.d3 { color: #888; }
-.d4 { color: #aaa; }
-.d5 { color: #ccc; }
-.d6 { color: #eee; }
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .grid {
-    font-size: 14px; /* Smaller font for mobile */
-  }
-
-  .gridwrap {
-    overflow-x: auto; /* Allow horizontal scrolling if content overflows */
-  }
-}
-
-/* Overlay layer for interactive zones and custom cursor */
-.overlays {
-  position: absolute;
-  left: 0;
-  top: 0;
-  pointer-events: none; /* let grid receive events except explicit zones */
-  z-index: 3; /* interactive zones above ASCII/background */
-}
-
-.linkzone {
-  position: absolute;
+/* Desktop header - show by default */
+.desktop-header {
   display: block;
-  pointer-events: auto;
+}
+
+/* Mobile header - hide by default */
+.mobile-header {
+  display: none;
+}
+
+.mobile-first-name {
+  margin-bottom: 10px;
+}
+
+.mobile-last-name {
+  margin-bottom: 0;
+}
+
+/* Command line styling */
+.command-line {
+  margin-bottom: 15px;
+  color: #00ff00;
+  word-break: break-word;
+}
+
+.prompt {
+  color: #888888;
+  font-weight: bold;
+}
+
+.command {
+  color: #00ff00;
+}
+
+/* Profile content styling */
+.profile-content {
+  margin-top: 0;
+}
+
+/* CLI-style sections */
+.cli-section {
+  margin-bottom: 20px;
+  color: #00ff00;
+  display: grid;
+  gap: 8px;
+}
+
+.cli-command {
+  color: #ffffff;
+  font-weight: bold;
+  margin-bottom: 4px;
+  font-family: 'Courier New', monospace;
+  word-break: break-word;
+}
+
+.cli-command::before {
+  content: "";
+  color: #00ff00;
+}
+
+.cli-output {
+  color: #cccccc;
+  margin-left: 0px;
+  line-height: 1.4;
+  margin-bottom: 8px;
+  overflow-wrap: anywhere;
+}
+
+/* Text styling */
+.highlight-text {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.accent-green {
+  color: #00ff00;
+  font-weight: bold;
+}
+
+.accent-cyan {
+  color: #00ffff;
+  font-weight: bold;
+}
+
+.accent-yellow {
+  color: #ffff00;
+  font-weight: bold;
+}
+
+.accent-purple {
+  color: #ff00ff;
+  font-weight: bold;
+}
+
+strong {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+em {
+  color: #00ff00;
+  font-style: italic;
+}
+
+/* Comment styling */
+.cli-comment {
+  color: #888888;
+  font-style: italic;
+  margin-bottom: 4px;
+  margin-top: 8px;
+}
+
+.cli-comment:first-child {
+  margin-top: 0;
+}
+
+.comment-inline {
+  color: #888888;
+  font-style: italic;
+}
+
+/* Typing animation styles */
+.typing-container {
+  margin-bottom: 20px;
+  display: grid;
+  gap: 24px;
+}
+
+.completed-section,
+.current-section {
+  display: grid;
+  gap: 12px;
+}
+
+.completed-command, .current-command {
+  margin-bottom: 8px;
+  font-family: 'Courier New', monospace;
+}
+
+.prompt {
+  color: #888888;
+  font-weight: bold;
+}
+
+.command {
+  color: #00ff00;
+}
+
+/* Personal information structured layout */
+.personal-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.info-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+.info-label {
+  font-weight: bold;
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.separator {
+  color: #888888;
+  margin: 0 6px;
+}
+
+.gpa-graduation-line {
+  flex-wrap: wrap;
+}
+
+/* Projects section styling */
+.projects-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.project-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.project-header {
+  margin-bottom: 6px;
+}
+
+.project-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.project-name {
+  font-size: 1.1em;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.project-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.project-type {
+  color: #888888;
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+.project-status {
+  font-size: 0.9em;
+}
+
+.project-description {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-left: 0;
+}
+
+.project-bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+.project-bullet {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.project-text {
+  flex: 1;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Current focus section styling */
+.current-focus-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Interests section styling */
+.interests-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.interests-header,
+.current-project-header {
+  margin-bottom: 6px;
+}
+
+.interests-intro {
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+.current-project-desc {
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Challenge and focus lists */
+.challenge-list, .focus-list {
+  margin: 8px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.challenge-item, .focus-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+.challenge-bullet,
+.challenge-item span:first-child,
+.focus-item span:first-child {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.challenge-text {
+  flex: 1;
+  word-wrap: break-word;
+}
+
+/* Process styling improvements */
+.process-line {
+  margin-bottom: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.process-id {
+  font-weight: bold;
+  min-width: 60px;
+  flex-shrink: 0;
+}
+
+.process-desc {
+  color: #cccccc;
+}
+
+/* Large tablets and small desktops */
+@media (max-width: 1024px) {
+  .terminal-container {
+    padding: 48px 32px;
+  }
+
+  .terminal-content {
+    max-width: 900px;
+  }
+}
+
+/* Medium tablets */
+@media (max-width: 900px) {
+  .terminal-container {
+    padding: 40px 28px;
+  }
+
+  .command-item {
+    gap: 6px;
+  }
+
+  .external-links-left .command-item {
+    flex-wrap: wrap;
+  }
+}
+
+/* Mobile improvements */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .terminal-container {
+    padding: 32px 20px;
+  }
+
+  .terminal-content {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+  }
+
+  .desktop-header {
+    display: none;
+  }
+
+  .mobile-header {
+    display: block;
+  }
+
+  .cli-comment,
+  .cli-command,
+  .cli-output {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .typing-container {
+    margin-bottom: 24px;
+    gap: 18px;
+  }
+
+  /* Enhanced whoami section mobile styling */
+  .personal-info {
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .personal-info > div {
+    line-height: 1.6;
+    margin-bottom: 6px;
+  }
+
+  /* Better external links mobile layout */
+  .external-links-left {
+    text-align: left !important;
+  }
+
+  .external-links-left .command-item {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+
+  .external-links-left .command-name {
+    flex-shrink: 0;
+  }
+
+  .external-links-left .command-link {
+    word-break: break-all;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .external-links-left .command-desc {
+    flex-basis: 100%;
+    margin-left: 0;
+    font-size: 0.9rem;
+  }
+  
+  /* Enhanced projects section mobile styling */
+  .projects-section {
+    gap: 18px;
+  }
+
+  .project-item {
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .project-header {
+    margin-bottom: 8px;
+  }
+
+  .project-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .project-meta {
+    gap: 6px;
+  }
+
+
+
+  .project-description {
+    gap: 8px;
+  }
+
+  .project-bullet-item {
+    gap: 10px;
+    line-height: 1.5;
+  }
+
+
+
+  /* Enhanced current focus section mobile styling */
+  .current-focus-section {
+    gap: 14px;
+  }
+
+  .current-project-desc {
+    line-height: 1.6;
+  }
+
+  /* Enhanced interests section mobile styling */
+  .interests-section {
+    gap: 14px;
+  }
+
+  .interests-intro,
+  .current-project-desc {
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .challenge-list {
+    gap: 8px;
+    margin: 10px 0;
+  }
+
+  .challenge-item, .focus-item {
+    flex-direction: row;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 0;
+    line-height: 1.5;
+  }
+
+  .challenge-text {
+    font-size: 0.95rem;
+  }
+  
+  .process-line {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .skill-items {
+    margin-left: 0;
+    gap: 6px;
+  }
+
+  .skill-category {
+    margin-bottom: 8px;
+  }
+}
+
+/* CLI list styling */
+.cli-list {
+  font-family: 'Courier New', monospace;
+}
+
+.skill-category {
+  margin-bottom: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.file-type {
+  color: #888888;
+  font-size: 0.9em;
+  margin-right: 8px;
+}
+
+.skill-items {
+  color: #cccccc;
+  margin-left: 20px;
+  margin-top: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Technology stack alternating color pattern */
+.tech-stack-row-1 .skill-items span:nth-of-type(1) strong { color: #adff2f !important; } /* greenyellow - Java */
+.tech-stack-row-1 .skill-items span:nth-of-type(2) strong { color: #9932cc !important; } /* purple - JavaScript */
+.tech-stack-row-1 .skill-items span:nth-of-type(3) strong { color: #0080ff !important; } /* blue - Swift */
+.tech-stack-row-1 .skill-items span:nth-of-type(4) strong { color: #ff6347 !important; } /* tomato - Python */
+.tech-stack-row-1 .skill-items span:nth-of-type(5) strong { color: #ffa500 !important; } /* orange - C */
+
+.tech-stack-row-2 .skill-items span:nth-of-type(1) strong { color: #ffa500 !important; } /* orange - Spring Boot */
+.tech-stack-row-2 .skill-items span:nth-of-type(2) strong { color: #ff6347 !important; } /* tomato - React */
+.tech-stack-row-2 .skill-items span:nth-of-type(3) strong { color: #0080ff !important; } /* blue - SwiftUI */
+
+.tech-stack-row-3 .skill-items span:nth-of-type(1) strong { color: #adff2f !important; } /* greenyellow - AWS */
+.tech-stack-row-3 .skill-items span:nth-of-type(2) strong { color: #9932cc !important; } /* purple - Git */
+.tech-stack-row-3 .skill-items span:nth-of-type(3) strong { color: #0080ff !important; } /* blue - Google Cast SDK */
+.tech-stack-row-3 .skill-items span:nth-of-type(4) strong { color: #ff6347 !important; } /* tomato - Jasypt */
+
+.tech-stack-row-4 .skill-items span:nth-of-type(1) strong { color: #ffa500 !important; } /* orange - JUnit */
+.tech-stack-row-4 .skill-items span:nth-of-type(2) strong { color: #ff6347 !important; } /* tomato - XCTest */
+
+/* Process list styling */
+.process-line {
+  margin-bottom: 4px;
+  font-family: 'Courier New', monospace;
+}
+
+.process-id {
+  color: #888888;
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.process-desc {
+  color: #cccccc;
+  margin-left: 8px;
+}
+
+/* Help section styling */
+.help-header {
+  color: #ffffff;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.command-item {
+  margin-bottom: 6px;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+/* External links left-aligned styling */
+.external-links-left {
+  text-align: left;
+}
+
+.external-links-left .command-item {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.command-name {
+  color: #00ff00;
+  font-weight: bold;
+  margin-right: 4px;
+}
+
+.command-link {
+  color: #00ffff;
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+}
+
+.command-link:hover {
+  color: #ffffff;
+  background-color: #00ffff;
   text-decoration: none;
 }
 
-.cursorChar {
-  position: absolute;
-  width: 1ch;
-  height: 1.2em;
-  pointer-events: none;
-  z-index: 4; /* custom cursor above everything */
+.command-desc {
+  color: #888888;
+  font-style: italic;
+}
+
+/* Legacy profile section styling for compatibility */
+.profile-section {
+  margin-bottom: 12px;
+  color: #00ff00;
+}
+
+.profile-section h3 {
+  color: #00ff00;
+  margin-bottom: 5px;
+  font-weight: normal;
+}
+
+.profile-section p {
+  margin-bottom: 2px;
+  color: #00ff00;
+  line-height: 1.3;
+}
+
+/* Download link styling */
+.download-link {
+  margin-top: 20px;
+  color: #00ff00;
+}
+
+.download-link a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.download-link a:hover {
+  color: #00ff00;
+}
+
+/* General link styling */
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #00ff00;
+}
+
+/* Touch and accessibility improvements */
+.terminal-link, .command-link {
+  -webkit-tap-highlight-color: rgba(255, 255, 0, 0.2);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Focus styles for keyboard navigation */
+.terminal-link:focus, .command-link:focus {
+  outline: 2px solid #ffff00;
+  outline-offset: 2px;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .cursor {
+    animation: none;
+  }
+  
+  .terminal-link, .command-link {
+    transition: none;
+  }
+}
+
+/* Blinking cursor animation */
+.cursor {
+  animation: blink 1s infinite;
+  color: #00ff00;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Responsive design */
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .terminal-container {
+    padding: 24px 16px 32px;
+    font-size: 0.9rem;
+  }
+
+  .terminal-content {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+  }
+
+  .cli-comment,
+  .cli-command,
+  .cli-output {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .cli-command {
+    margin-bottom: 8px;
+  }
+
+  .ascii-header {
+    margin-bottom: 16px;
+  }
+
+  .typing-container {
+    gap: 16px;
+  }
+
+  .completed-section,
+  .current-section {
+    gap: 12px;
+  }
+
+  /* Optimized whoami section for small screens */
+  .personal-info {
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .personal-info > div {
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+
+  /* Better external links for small screens */
+  .external-links-left .command-item {
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+
+  .external-links-left .command-desc {
+    font-size: 0.8rem;
+    margin-top: 2px;
+  }
+
+  /* Optimized projects section for small screens */
+  .projects-section {
+    gap: 20px;
+  }
+
+  .project-item {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .project-header {
+    margin-bottom: 10px;
+  }
+
+  .project-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+  }
+
+  .project-meta {
+    gap: 4px;
+  }
+
+
+
+  .project-description {
+    gap: 10px;
+  }
+
+  .project-bullet-item {
+    gap: 8px;
+    line-height: 1.6;
+  }
+
+
+
+  /* Optimized current focus section for small screens */
+  .current-focus-section {
+    gap: 16px;
+  }
+
+  .current-project-desc {
+    line-height: 1.7;
+  }
+
+  /* Optimized interests section for small screens */
+  .interests-section {
+    gap: 16px;
+  }
+
+  .interests-intro,
+  .current-project-desc {
+    line-height: 1.7;
+    font-size: 0.9rem;
+  }
+
+  .challenge-list {
+    gap: 10px;
+    margin: 12px 0;
+  }
+
+  .challenge-item, .focus-item {
+    gap: 8px;
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+
+  .challenge-text {
+    font-size: 0.9rem;
+  }
+
+  .process-line {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .skill-items {
+    gap: 4px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 360px) {
+  .terminal-container {
+    padding: 20px 12px 28px;
+    font-size: 0.85rem;
+  }
+
+  .terminal-content {
+    max-width: none;
+    width: 100%;
+  }
+
+  .cli-comment,
+  .cli-command,
+  .cli-output {
+    font-size: 0.8rem;
+    line-height: 1.7;
+  }
+
+  /* Ultra-compact whoami section */
+  .personal-info {
+    gap: 14px;
+    margin-top: 12px;
+  }
+
+  .personal-info > div {
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+
+  /* Compact external links */
+  .external-links-left .command-item {
+    gap: 3px;
+    margin-bottom: 12px;
+  }
+
+  .external-links-left .command-name {
+    font-size: 0.8rem;
+  }
+
+  .external-links-left .command-link {
+    font-size: 0.8rem;
+  }
+
+  .external-links-left .command-desc {
+    font-size: 0.75rem;
+    margin-top: 3px;
+  }
+
+  /* Ultra-compact projects section */
+  .projects-section {
+    gap: 22px;
+  }
+
+  .project-item {
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .project-header {
+    margin-bottom: 12px;
+  }
+
+  .project-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .project-meta {
+    gap: 3px;
+  }
+
+
+
+  .project-description {
+    gap: 12px;
+  }
+
+  .project-bullet-item {
+    gap: 6px;
+    line-height: 1.7;
+  }
+
+
+
+  /* Ultra-compact current focus section */
+  .current-focus-section {
+    gap: 18px;
+  }
+
+  .current-project-desc {
+    line-height: 1.8;
+  }
+
+  /* Ultra-compact interests section */
+  .interests-section {
+    gap: 18px;
+  }
+
+  .interests-intro,
+  .current-project-desc {
+    line-height: 1.8;
+    font-size: 0.85rem;
+  }
+
+  .challenge-list {
+    gap: 12px;
+    margin: 14px 0;
+  }
+
+  .challenge-item, .focus-item {
+    gap: 6px;
+    margin-bottom: 0;
+    line-height: 1.7;
+  }
+
+  .challenge-text {
+    font-size: 0.85rem;
+  }
+
+  .process-line {
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .skill-items {
+    gap: 3px;
+    font-size: 0.8rem;
+  }
+
+  .skill-category {
+    margin-bottom: 10px;
+  }
 }

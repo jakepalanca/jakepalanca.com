@@ -1,9 +1,13 @@
 import React from 'react';
 import './App.css';
-import { Grid } from './components/Grid';
+import Terminal from './components/Terminal';
 
-export default function App() {
+function App() {
   return (
-    <Grid />
+    <div className="App">
+      <Terminal />
+    </div>
   );
 }
+
+export default App;

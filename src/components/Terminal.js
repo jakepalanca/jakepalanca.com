@@ -98,9 +98,9 @@ const Terminal = () => {
           <div className="project-item">
             <div className="project-header">
               <div className="project-title-row">
-                <span className="project-name accent-cyan">SwiftCast</span>
+                <span className="project-name accent-cyan">Swiftcast Casting Browser</span>
                 <span className="project-meta">
-                  <span className="project-type">Casting Browser</span>
+                  <span className="project-type">Personal Project</span>
                   <span className="project-status accent-green">(Ongoing)</span>
                 </span>
               </div>
@@ -109,7 +109,7 @@ const Terminal = () => {
               <div className="project-bullet-item">
                 <span className="project-bullet accent-purple">●</span>
                 <span className="project-text">
-                  Injected <strong>JavaScript content script</strong> at page load in WebView to
+                  Injected a <strong>JavaScript content script</strong> at page load in the app's WebView to
                   observe in-page network activity and capture outgoing{' '}
                   <em>video stream requests</em> in real time
                 </span>
@@ -145,23 +145,22 @@ const Terminal = () => {
               <div className="project-bullet-item">
                 <span className="project-bullet accent-purple">●</span>
                 <span className="project-text">
-                  Built end-to-end <strong>login/forgot/reset flows</strong> wired to Spring Boot
-                  endpoints, coordinating UI state with <em>React Router</em>
+                  Shipped <strong>auth suite</strong> (login/forgot/reset) with token-validated flows;{' '}
+                  <em>bcrypt-hashed passwords</em> and <span className="accent-cyan">JWTs</span> with expiry/invalidations
                 </span>
               </div>
               <div className="project-bullet-item">
                 <span className="project-bullet accent-yellow">●</span>
                 <span className="project-text">
-                  Encrypted sensitive <strong>payment fields at rest</strong> using custom JPA
-                  IntegerCryptoConverter (<span className="accent-yellow">Jasypt</span>) applied via
-                  @Convert on CVV/ZIP columns
+                  Tokenized simulated <strong>payment data</strong> and encrypted sensitive columns at rest using a{' '}
+                  <span className="accent-yellow">JPA @Convert</span> (<em>Jasypt</em>)
                 </span>
               </div>
               <div className="project-bullet-item">
                 <span className="project-bullet accent-cyan">●</span>
                 <span className="project-text">
-                  Implemented <strong>token-validated password reset</strong> that POSTs to
-                  /reset-password and routes users back to login screen on success
+                  Implemented <strong>seat selection</strong>, inventory holds, and admin tooling; added{' '}
+                  <em>input validation</em> and basic <span className="accent-purple">rate limiting</span>
                 </span>
               </div>
             </div>
@@ -181,13 +180,13 @@ const Terminal = () => {
                 <span className="project-bullet accent-purple">●</span>
                 <span className="project-text">
                   Reconstructed <strong>hop-by-hop paths</strong> by matching outbound TCP (id/TTL)
-                  to ICMP "time exceeded"/"destination unreachable" replies
+                  to ICMP <em>"time exceeded"</em>/<em>"destination unreachable"</em> replies
                 </span>
               </div>
               <div className="project-bullet-item">
                 <span className="project-bullet accent-yellow">●</span>
                 <span className="project-text">
-                  Streamed <strong>multi-GB traces</strong> with buffered generator pattern to keep
+                  Streamed <strong>multi-GB traces</strong> with a buffered generator pattern to keep
                   memory <em>O(1)</em>
                 </span>
               </div>
@@ -195,7 +194,8 @@ const Terminal = () => {
                 <span className="project-bullet accent-cyan">●</span>
                 <span className="project-text">
                   Computed <strong>RTTs from tcpdump timestamps</strong>, aggregated per-TTL, and
-                  supported both Unix traceroute+tcpdump and Windows tracert logs
+                  supported both <span className="accent-cyan">Unix traceroute+tcpdump</span> and{' '}
+                  <span className="accent-cyan">Windows tracert</span> logs
                 </span>
               </div>
             </div>

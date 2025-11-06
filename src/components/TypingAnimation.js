@@ -83,6 +83,7 @@ const TypingAnimation = ({
       if (isLastSection) {
         // Last section - show final cursor immediately in same render cycle
         setCompletedSections(prev => [...prev, currentSection]);
+        setCurrentSection(prev => prev + 1); // Increment to prevent duplicate rendering
         setAllComplete(true);
       }
       return;
@@ -93,6 +94,7 @@ const TypingAnimation = ({
       if (isLastSection) {
         // This shouldn't happen, but just in case
         setCompletedSections(prev => [...prev, currentSection]);
+        setCurrentSection(prev => prev + 1); // Increment to prevent duplicate rendering
         setAllComplete(true);
         return;
       }

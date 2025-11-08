@@ -19,7 +19,7 @@ const Terminal = () => {
               </span>
               <span className="comment-inline">at the</span>
               <strong>University of Georgia</strong>
-              <span className="accent-cyan">(3.66 GPA, Expected Graduation: May 2026)</span>
+              <span className="accent-cyan">(3.61 GPA, Expected Graduation: May 2026)</span>
             </div>
             <div className="info-line">
               <span className="comment-inline">Focusing on</span>

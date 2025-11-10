@@ -212,33 +212,45 @@ const Terminal = () => {
           </div>
           <div className="tree-line">
             <span className="tree-char">├── </span>
-            <span className="directory-label">languages/</span>
-            <span className="skill-items-inline"> (Java, JavaScript, Swift, Python, C)</span>
+            <span className="tree-content">
+              <span className="directory-label">languages/</span>
+              <span className="skill-items-inline"> (Java, JavaScript, Swift, Python, C)</span>
+            </span>
           </div>
           <div className="tree-line">
             <span className="tree-char">├── </span>
-            <span className="directory-label">frameworks/</span>
-            <span className="skill-items-inline"> (Spring Boot, React, SwiftUI)</span>
+            <span className="tree-content">
+              <span className="directory-label">frameworks/</span>
+              <span className="skill-items-inline"> (Spring Boot, React, SwiftUI)</span>
+            </span>
           </div>
           <div className="tree-line">
             <span className="tree-char">├── </span>
-            <span className="directory-label">testing/</span>
-            <span className="skill-items-inline"> (JUnit, XCTest)</span>
+            <span className="tree-content">
+              <span className="directory-label">testing/</span>
+              <span className="skill-items-inline"> (JUnit, XCTest)</span>
+            </span>
           </div>
           <div className="tree-line">
             <span className="tree-char">└── </span>
-            <span className="directory-label">tools/</span>
-            <span className="skill-items-inline"> (Git, Google Cast SDK, Jasypt)</span>
+            <span className="tree-content">
+              <span className="directory-label">tools/</span>
+              <span className="skill-items-inline"> (Git, Google Cast SDK, Jasypt)</span>
+            </span>
           </div>
           <div className="tree-line tree-nested">
             <span className="tree-char">    ├── </span>
-            <span className="directory-label">build-tools/</span>
-            <span className="skill-items-inline"> (Maven, Gradle, npm)</span>
+            <span className="tree-content">
+              <span className="directory-label">build-tools/</span>
+              <span className="skill-items-inline"> (Maven, Gradle, npm)</span>
+            </span>
           </div>
           <div className="tree-line tree-nested">
             <span className="tree-char">    └── </span>
-            <span className="directory-label">cloud/</span>
-            <span className="skill-items-inline"> (AWS)</span>
+            <span className="tree-content">
+              <span className="directory-label">cloud/</span>
+              <span className="skill-items-inline"> (AWS)</span>
+            </span>
           </div>
         </div>
       ),

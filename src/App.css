@@ -443,17 +443,14 @@ em {
 }
 
 .tree-line {
-  display: flex;
-  align-items: baseline;
-  white-space: normal;
+  display: block;
   line-height: inherit;
   margin: 0;
   padding: 0;
-  height: auto;
-  min-height: 0;
-  flex-wrap: wrap;
-  word-break: break-word;
-  overflow-wrap: break-word;
+}
+
+.tree-header {
+  /* Header line (~/skills/) has no special positioning */
 }
 
 .tree-char {
@@ -461,21 +458,50 @@ em {
   font-family: 'JetBrains Mono Local', 'SF Mono', 'Monaco', 'Menlo', 'Courier New', 'Consolas', monospace;
   line-height: inherit;
   white-space: pre;
-  flex-shrink: 0;
+  display: inline;
 }
 
 .tree-content {
-  display: inline-block;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  white-space: normal;
-  flex: 1;
-  min-width: 0;
-  vertical-align: baseline;
+  display: inline;
 }
 
-.tree-nested {
-  margin-left: 0;
+/* Grid-based tree line for dynamic continuation */
+.tree-line-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.tree-line-grid.tree-nested {
+  margin-left: 4ch;
+}
+
+.tree-prefix {
+  display: flex;
+  flex-direction: column;
+  color: #808080;
+  font-family: 'JetBrains Mono Local', 'SF Mono', 'Monaco', 'Menlo', 'Courier New', 'Consolas', monospace;
+  white-space: pre;
+  line-height: inherit;
+}
+
+.tree-char-main {
+  color: #808080;
+  white-space: pre;
+  line-height: inherit;
+}
+
+.tree-char-cont {
+  color: #808080;
+  white-space: pre;
+  line-height: inherit;
+}
+
+.tree-content-block {
+  line-height: inherit;
+  min-width: 0;
 }
 
 .directory-label {
@@ -553,39 +579,10 @@ em {
     line-height: inherit;
   }
 
-  .cli-list > * {
-    margin: 0 !important;
-    padding: 0 !important;
-    line-height: inherit !important;
+  .cli-list > .tree-nested {
+    margin-left: 4ch;
   }
 
-  .tree-line {
-    line-height: inherit !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    height: auto;
-    min-height: 0;
-  }
-
-  .tree-line * {
-    line-height: inherit !important;
-  }
-
-  .tree-line + .tree-line {
-    margin-top: 0 !important;
-  }
-
-  .tree-line + .tree-nested {
-    margin-top: 0 !important;
-  }
-
-  .tree-nested + .tree-nested {
-    margin-top: 0 !important;
-  }
-
-  .cli-list .tree-line {
-    line-height: inherit !important;
-  }
 }
 
 @media (max-width: 480px) {

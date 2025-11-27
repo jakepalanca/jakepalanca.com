@@ -1,5 +1,6 @@
 import ASCIIArt from './ASCIIArt';
 import TypingAnimation from './TypingAnimation';
+import TreeLine from './TreeLine';
 
 const Terminal = () => {
   // Construct resume path - PUBLIC_URL defaults to empty string in Create React App
@@ -19,7 +20,7 @@ const Terminal = () => {
             </div>
             <div className="info-line">
               <span>
-                Focusing on networking-focused <span className="accent-cyan">Java</span> development — building <span className="accent-cyan">distributed systems</span> that
+                Focusing on networking-focused <span className="accent-cyan">Java</span> development and building <span className="accent-cyan">distributed systems</span> that
                 connect and scale.
               </span>
             </div>
@@ -139,8 +140,7 @@ const Terminal = () => {
               <div className="project-bullet-item">
                 <span className="project-bullet">●</span>
                 <span className="project-text">
-                  Tokenized simulated <span className="accent-cyan">payment data</span> and encrypted sensitive columns at rest using a <span className="accent-cyan">JPA @Convert</span>
-                  powered by <span className="accent-cyan">Jasypt</span>.
+                  Tokenized simulated <span className="accent-cyan">payment data</span> and encrypted sensitive columns at rest using a <span className="accent-cyan">JPA</span>{' '}<span className="accent-cyan">@Convert</span>{' '}powered by <span className="accent-cyan">Jasypt</span>.
                 </span>
               </div>
               <div className="project-bullet-item">
@@ -207,51 +207,33 @@ const Terminal = () => {
       command: 'tree ~/skills/',
       output: (
         <div className="cli-list">
-          <div className="tree-line">
+          <div className="tree-line tree-header">
             <span className="tree-char">~/skills/</span>
           </div>
-          <div className="tree-line">
-            <span className="tree-char">├── </span>
-            <span className="tree-content">
-              <span className="directory-label">languages/</span>
-              <span className="skill-items-inline"> (Java, JavaScript, Swift, Python, C)</span>
-            </span>
-          </div>
-          <div className="tree-line">
-            <span className="tree-char">├── </span>
-            <span className="tree-content">
-              <span className="directory-label">frameworks/</span>
-              <span className="skill-items-inline"> (Spring Boot, React, SwiftUI)</span>
-            </span>
-          </div>
-          <div className="tree-line">
-            <span className="tree-char">├── </span>
-            <span className="tree-content">
-              <span className="directory-label">testing/</span>
-              <span className="skill-items-inline"> (JUnit, XCTest)</span>
-            </span>
-          </div>
-          <div className="tree-line">
-            <span className="tree-char">└── </span>
-            <span className="tree-content">
-              <span className="directory-label">tools/</span>
-              <span className="skill-items-inline"> (Git, Google Cast SDK, Jasypt)</span>
-            </span>
-          </div>
-          <div className="tree-line tree-nested">
-            <span className="tree-char">    ├── </span>
-            <span className="tree-content">
-              <span className="directory-label">build-tools/</span>
-              <span className="skill-items-inline"> (Maven, Gradle, npm)</span>
-            </span>
-          </div>
-          <div className="tree-line tree-nested">
-            <span className="tree-char">    └── </span>
-            <span className="tree-content">
-              <span className="directory-label">cloud/</span>
-              <span className="skill-items-inline"> (AWS)</span>
-            </span>
-          </div>
+          <TreeLine treeChar="├── " isLast={false}>
+            <span className="directory-label">languages/</span>
+            <span className="skill-items-inline"> (Java, JavaScript, Swift, Python, C)</span>
+          </TreeLine>
+          <TreeLine treeChar="├── " isLast={false}>
+            <span className="directory-label">frameworks/</span>
+            <span className="skill-items-inline"> (Spring Boot, React, SwiftUI)</span>
+          </TreeLine>
+          <TreeLine treeChar="├── " isLast={false}>
+            <span className="directory-label">testing/</span>
+            <span className="skill-items-inline"> (JUnit, XCTest)</span>
+          </TreeLine>
+          <TreeLine treeChar="└── " isLast={true}>
+            <span className="directory-label">tools/</span>
+            <span className="skill-items-inline"> (Git, Google Cast SDK, Jasypt)</span>
+          </TreeLine>
+          <TreeLine treeChar="├── " isNested={true} isLast={false}>
+            <span className="directory-label">build-tools/</span>
+            <span className="skill-items-inline"> (Maven, Gradle, npm)</span>
+          </TreeLine>
+          <TreeLine treeChar="└── " isNested={true} isLast={true}>
+            <span className="directory-label">cloud/</span>
+            <span className="skill-items-inline"> (AWS)</span>
+          </TreeLine>
         </div>
       ),
     },

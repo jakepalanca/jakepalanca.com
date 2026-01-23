@@ -25,7 +25,7 @@ const Terminal = () => {
               </span>
             </div>
             <div className="info-line gpa-line">
-              <span>3.61 GPA</span>
+              <span>3.6 GPA</span>
               <span className="separator">·</span>
               <span>Graduating Spring 2026</span>
             </div>
@@ -82,13 +82,36 @@ const Terminal = () => {
       ),
     },
     {
+      command: 'cat ~/current-focus.txt',
+      output: (
+        <div className="current-focus-section">
+          <div>
+            <span className="comment-inline"># What am I up to? </span>
+          </div>
+          <div className="current-project-desc">
+            I'm building <span className="accent-cyan">Cast</span>, a browser that uses <span className="accent-cyan">JavaScript injection</span> to bridge <span className="accent-cyan">WebKit</span> internals with <span className="accent-cyan">ffmpeg</span> for on-device HLS conversion and casting.
+          </div>
+        </div>
+      ),
+    },
+    {
       command: 'ls -la ~/projects/ --sort=date --reverse',
       output: (
         <div className="projects-section">
           <div className="project-item">
             <div>
               <div className="project-title-row">
-                <span className="project-name accent-yellow">Swiftcast Casting Browser</span>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px' }}>
+                  <span className="project-name accent-yellow">Cast</span>
+                  <a
+                    href="https://castbrowser.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="command-link"
+                  >
+                    (castbrowser.com)
+                  </a>
+                </div>
                 <span className="project-meta">
                   <span className="project-type">Personal Project</span>
                   <span className="project-status accent-purple">(Ongoing)</span>
@@ -99,22 +122,19 @@ const Terminal = () => {
               <div className="project-bullet-item">
                 <span className="project-bullet">●</span>
                 <span className="project-text">
-                  Injected a <span className="accent-cyan">JavaScript</span> content script at <span className="accent-cyan">WebView</span> load to observe <span className="accent-cyan">network activity</span> and
-                  capture outgoing <span className="accent-cyan">video stream requests</span> in real time.
+                  Injects custom <span className="accent-cyan">JavaScript</span> into <span className="accent-cyan">WebViews</span> to intercept and analyze network traffic for media streams.
                 </span>
               </div>
               <div className="project-bullet-item">
                 <span className="project-bullet">●</span>
                 <span className="project-text">
-                  Shimmed <span className="accent-cyan">HTML5 media</span> and <span className="accent-cyan">MSE APIs</span> to surface dynamic <span className="accent-cyan">HLS/DASH manifest URLs</span> and blob
-                  sources generated via <span className="accent-cyan">Media Source Extensions</span>.
+                  Leverages <span className="accent-cyan">ffmpeg</span> for on-device conversion to <span className="accent-cyan">HLS</span>, ensuring broad stream compatibility.
                 </span>
               </div>
               <div className="project-bullet-item">
                 <span className="project-bullet">●</span>
                 <span className="project-text">
-                  Parsed request <span className="accent-cyan">URLs</span>, <span className="accent-cyan">headers</span>, and <span className="accent-cyan">payloads</span> client-side and relayed playable streams to
-                  <span className="accent-cyan"> Chromecast</span> through the <span className="accent-cyan">Google Cast SDK</span>.
+                  Enables seamless casting to <span className="accent-cyan">AirPlay</span> and <span className="accent-cyan">Chromecast</span> devices from any web video.
                 </span>
               </div>
             </div>
@@ -180,25 +200,10 @@ const Terminal = () => {
                 <span className="project-bullet">●</span>
                 <span className="project-text">
                   Computed <span className="accent-cyan">RTTs</span> from <span className="accent-cyan">tcpdump timestamps</span>, aggregated per <span className="accent-cyan">TTL</span>, and supported both <span className="accent-cyan">Unix
-                  traceroute</span> plus tcpdump and <span className="accent-cyan">Windows tracert</span> logs.
+                    traceroute</span> plus tcpdump and <span className="accent-cyan">Windows tracert</span> logs.
                 </span>
               </div>
             </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      command: 'cat ~/current-focus.txt',
-      output: (
-        <div className="current-focus-section">
-          <div>
-            <span className="comment-inline"># What am I up to? </span>
-          </div>
-          <div className="current-project-desc">
-            I'm building <span className="accent-cyan">SwiftCast</span>, a browser that lets you cast any video content by injecting
-            <span className="accent-cyan"> JavaScript</span> into <span className="accent-cyan">WebViews</span> to intercept <span className="accent-cyan">HLS/DASH streams</span>, shim <span className="accent-cyan">HTML5 media APIs</span>, and relay
-            captured video to <span className="accent-cyan">Chromecast</span> in real time.
           </div>
         </div>
       ),

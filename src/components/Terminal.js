@@ -5,7 +5,8 @@ import TreeLine from './TreeLine';
 const Terminal = () => {
   // Construct resume path - PUBLIC_URL defaults to empty string in Create React App
   const publicUrl = process.env.PUBLIC_URL || '';
-  const resumePath = publicUrl ? `${publicUrl}/Jake_Palanca_Resume.pdf` : '/Jake_Palanca_Resume.pdf';
+  const timestamp = new Date().getTime();
+  const resumePath = publicUrl ? `${publicUrl}/Jake_Palanca_Resume.pdf?v=${timestamp}` : `/Jake_Palanca_Resume.pdf?v=${timestamp}`;
   const sections = [
     {
       command: 'whoami --verbose',

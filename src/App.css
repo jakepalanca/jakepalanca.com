@@ -98,7 +98,7 @@ body {
   line-height: inherit;
 }
 
-.typing-container > .final-prompt {
+.typing-container>.final-prompt {
   margin-top: 0;
 }
 
@@ -232,14 +232,14 @@ em {
   line-height: inherit;
 }
 
-.info-line > span {
+.info-line>span {
   display: inline;
   word-break: break-word;
   overflow-wrap: break-word;
   white-space: normal;
 }
 
-.info-line > span:not(.separator):not(:last-child)::after {
+.info-line>span:not(.separator):not(:last-child)::after {
   content: ' ';
 }
 
@@ -252,6 +252,48 @@ em {
   font-weight: bold;
   font-style: italic;
   margin-top: var(--gap);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  align-items: center;
+}
+
+.highlight-box {
+  display: inline;
+  padding: 0 4px;
+  color: #000000;
+  font-style: normal;
+  font-weight: 600;
+  line-height: inherit;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.highlight-box span {
+  color: #000000;
+}
+
+.box-cyan {
+  background-color: #7dd3fc;
+}
+
+.box-yellow {
+  background-color: #fde047;
+}
+
+.box-green {
+  background-color: #90ee90;
+}
+
+.email-box {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.email-box:hover {
+  background-color: #d8b4fe;
+  /* Purple on hover */
+  text-decoration: underline;
 }
 
 .comment-inline {
@@ -299,7 +341,7 @@ em {
   line-height: inherit;
 }
 
-.command-content > * {
+.command-content>* {
   flex-shrink: 0;
 }
 
@@ -318,6 +360,17 @@ em {
   background-color: #7dd3fc;
   text-decoration: underline;
   text-decoration-color: #7dd3fc;
+}
+
+.command-link.yellow {
+  text-decoration-color: #fde047;
+}
+
+.command-link.yellow:hover,
+.command-link.yellow:focus {
+  color: #000000;
+  background-color: #fde047;
+  text-decoration-color: #fde047;
 }
 
 .command-desc {
@@ -579,7 +632,7 @@ em {
     line-height: inherit;
   }
 
-  .cli-list > .tree-nested {
+  .cli-list>.tree-nested {
     margin-left: 4ch;
   }
 

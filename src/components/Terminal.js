@@ -20,14 +20,14 @@ const Terminal = () => {
             </div>
             <div className="info-line">
               <span>
-                Focusing on networking-focused <span className="accent-cyan">Java</span> development and building <span className="accent-cyan">distributed systems</span> that
-                connect and scale.
+                Focusing on <span className="accent-cyan">database management</span> using <span className="accent-cyan">Java</span>, <span className="accent-cyan">Spring</span> and <span className="accent-cyan">MySQL</span>.
+                I also build <span className="accent-cyan">SwiftUI</span> apps in my free time.
               </span>
             </div>
             <div className="info-line gpa-line">
-              <span>3.6 GPA</span>
-              <span className="separator">·</span>
-              <span>Graduating Spring 2026</span>
+              <span className="highlight-box box-cyan">3.6 GPA</span>
+              <span className="highlight-box box-yellow">Graduating Spring 2026</span>
+              <a href="mailto:developer@jakepalanca.com" className="highlight-box box-green email-box">developer@jakepalanca.com</a>
             </div>
           </div>
         </div>
@@ -89,7 +89,7 @@ const Terminal = () => {
             <span className="comment-inline"># What am I up to? </span>
           </div>
           <div className="current-project-desc">
-            I'm building <span className="accent-cyan">Cast</span>, a browser that uses <span className="accent-cyan">JavaScript injection</span> to bridge <span className="accent-cyan">WebKit</span> internals with <span className="accent-cyan">ffmpeg</span> for on-device HLS conversion and casting.
+            I'm building <span className="accent-cyan">Cast</span>, a browser that uses <span className="accent-cyan">JavaScript injection</span> to bridge <span className="accent-cyan">WebKit</span> internals with <span className="accent-cyan">VLCKit</span> for on-device HLS conversion and casting.
           </div>
         </div>
       ),
@@ -107,7 +107,7 @@ const Terminal = () => {
                     href="https://castbrowser.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="command-link"
+                    className="command-link yellow"
                   >
                     (castbrowser.com)
                   </a>
@@ -128,7 +128,7 @@ const Terminal = () => {
               <div className="project-bullet-item">
                 <span className="project-bullet">●</span>
                 <span className="project-text">
-                  Leverages <span className="accent-cyan">ffmpeg</span> for on-device conversion to <span className="accent-cyan">HLS</span>, ensuring broad stream compatibility.
+                  Leverages <span className="accent-cyan">VLCKit</span> for on-device conversion to <span className="accent-cyan">HLS</span>, ensuring broad stream compatibility.
                 </span>
               </div>
               <div className="project-bullet-item">
@@ -143,7 +143,17 @@ const Terminal = () => {
           <div className="project-item">
             <div>
               <div className="project-title-row">
-                <span className="project-name accent-yellow">Cinema Booking Website</span>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px' }}>
+                  <span className="project-name accent-yellow">Cinema Booking Website</span>
+                  <a
+                    href="https://github.com/jakepalanca/Cinema-E-Booking-System"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="command-link yellow"
+                  >
+                    (GitHub)
+                  </a>
+                </div>
                 <span className="project-meta">
                   <span className="project-type">Class Project</span>
                 </span>
@@ -176,7 +186,7 @@ const Terminal = () => {
           <div className="project-item">
             <div>
               <div className="project-title-row">
-                <span className="project-name accent-yellow">TCPdump Parser</span>
+                <span className="project-name accent-yellow">Archer</span>
                 <span className="project-meta">
                   <span className="project-type">Class Project</span>
                 </span>
@@ -186,21 +196,19 @@ const Terminal = () => {
               <div className="project-bullet-item">
                 <span className="project-bullet">●</span>
                 <span className="project-text">
-                  Reconstructed hop-by-hop paths by matching outbound <span className="accent-cyan">TCP identifiers</span> and <span className="accent-cyan">TTLs</span> to <span className="accent-cyan">ICMP</span> time
-                  exceeded or destination unreachable replies.
+                  Shipped a real-time transit platform using <span className="accent-cyan">Next.js</span> and <span className="accent-cyan">MongoDB</span>, featuring interactive <span className="accent-cyan">maps</span> and live <span className="accent-cyan">bus route tracking</span>.
                 </span>
               </div>
               <div className="project-bullet-item">
                 <span className="project-bullet">●</span>
                 <span className="project-text">
-                  Streamed multi-GB traces with a <span className="accent-cyan">buffered generator pattern</span> to keep memory usage near <span className="accent-cyan">O(1)</span>.
+                  Built a unique <span className="accent-cyan">capacity betting system</span> allowing users to predict and crowdsource bus fullness levels.
                 </span>
               </div>
               <div className="project-bullet-item">
                 <span className="project-bullet">●</span>
                 <span className="project-text">
-                  Computed <span className="accent-cyan">RTTs</span> from <span className="accent-cyan">tcpdump timestamps</span>, aggregated per <span className="accent-cyan">TTL</span>, and supported both <span className="accent-cyan">Unix
-                    traceroute</span> plus tcpdump and <span className="accent-cyan">Windows tracert</span> logs.
+                  Implemented robust <span className="accent-cyan">user authentication</span> via middleware, supporting <span className="accent-cyan">protected routes</span> and personalized <span className="accent-cyan">saved locations</span>.
                 </span>
               </div>
             </div>
@@ -221,7 +229,11 @@ const Terminal = () => {
           </TreeLine>
           <TreeLine treeChar="├── " isLast={false}>
             <span className="directory-label">frameworks/</span>
-            <span className="skill-items-inline"> (Spring Boot, React, SwiftUI)</span>
+            <span className="skill-items-inline"> (Spring Boot, React, Next.js, SwiftUI)</span>
+          </TreeLine>
+          <TreeLine treeChar="├── " isLast={false}>
+            <span className="directory-label">databases/</span>
+            <span className="skill-items-inline"> (MongoDB, MySQL)</span>
           </TreeLine>
           <TreeLine treeChar="├── " isLast={false}>
             <span className="directory-label">testing/</span>
@@ -229,7 +241,7 @@ const Terminal = () => {
           </TreeLine>
           <TreeLine treeChar="└── " isLast={true}>
             <span className="directory-label">tools/</span>
-            <span className="skill-items-inline"> (Git, Google Cast SDK, Jasypt)</span>
+            <span className="skill-items-inline"> (Git, Docker, Google Cast SDK, Jasypt)</span>
           </TreeLine>
           <TreeLine treeChar="├── " isNested={true} isLast={false}>
             <span className="directory-label">build-tools/</span>

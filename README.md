@@ -12,7 +12,7 @@ A terminal-themed portfolio website showcasing my projects, skills, and experien
 
 I'm a Computer Science student at the University of Georgia (3.6 GPA, Graduating Spring 2026), focusing on networking-focused Java development and building distributed systems that connect and scale.
 
-Currently working on **[Cast](https://castbrowser.com)**, a browser that utilizes **ffmpeg**, **WebKit**, and **Liquid Glass** for on-device HLS conversion and supports **AirPlay** and **Chromecast**.
+Currently working on **[Cast](https://castbrowser.com)**, a browser that utilizes **VLCKit**, **WebKit**, and **Liquid Glass** for on-device HLS conversion and supports **AirPlay** and **Chromecast**.
 
 ## License
 

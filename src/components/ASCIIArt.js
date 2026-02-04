@@ -29,10 +29,10 @@ const mobileLastName = normalizeASCII(String.raw`
 
 const ASCIIArt = () => (
   <>
-    {/* Desktop version - full name on one line */}
+    {/* Desktop version */}
     <div className="ascii-header desktop-header">{desktopArt}</div>
 
-    {/* Mobile version - first name then last name */}
+    {/* Mobile version */}
     <div className="ascii-header mobile-header">
       <div className="mobile-first-name">{mobileFirstName}</div>
       <div className="mobile-last-name">{mobileLastName}</div>

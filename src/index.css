@@ -7,14 +7,17 @@
 }
 
 /* Global terminal styles */
+:root {
+  --terminal-white: #ffffff;
+}
 
 body {
   margin: 0;
   font-family: 'JetBrains Mono Local', 'SF Mono', 'Monaco', 'Menlo', 'Courier New', 'Consolas', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #0c0c0c;
-  color: #00ff00;
+  background-color: #000000;
+  color: var(--terminal-white);
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
@@ -60,8 +63,8 @@ code {
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #0c0c0c;
-    color: #00ff00;
+    background-color: #000000;
+    color: var(--terminal-white);
   }
 }
 

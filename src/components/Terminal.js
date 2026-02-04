@@ -84,7 +84,7 @@ const Terminal = () => {
                   </a>
                 </div>
                 <span className="project-meta">
-                  <span className="project-type">/* personal project */</span>
+                  <span className="project-type">{'/* personal project */'}</span>
                 </span>
               </div>
             </div>
@@ -113,7 +113,7 @@ const Terminal = () => {
                   </a>
                 </div>
                 <span className="project-meta">
-                  <span className="project-type">/* class project */</span>
+                  <span className="project-type">{'/* class project */'}</span>
                 </span>
               </div>
             </div>
@@ -142,7 +142,7 @@ const Terminal = () => {
                   </a>
                 </div>
                 <span className="project-meta">
-                  <span className="project-type">/* class project */</span>
+                  <span className="project-type">{'/* class project */'}</span>
                 </span>
               </div>
             </div>
@@ -163,7 +163,7 @@ const Terminal = () => {
                   <span className="project-name accent-yellow">tcpdump python cli parser</span>
                 </div>
                 <span className="project-meta">
-                  <span className="project-type">/* class project */</span>
+                  <span className="project-type">{'/* class project */'}</span>
                 </span>
               </div>
             </div>

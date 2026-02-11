@@ -31,7 +31,7 @@ const Terminal = () => {
                 <a
                   href={resumePath}
                   download="Jake_Palanca_Resume.pdf"
-                  className="command-link"
+                  className="command-link link-cyan"
                 >
                   resume
                 </a>
@@ -42,7 +42,7 @@ const Terminal = () => {
                   href="https://github.com/jakepalanca"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="command-link"
+                  className="command-link link-blue"
                 >
                   github
                 </a>
@@ -53,13 +53,13 @@ const Terminal = () => {
                   href="https://linkedin.com/in/jakepalanca"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="command-link"
+                  className="command-link link-pink"
                 >
                   linkedin
                 </a>
                 <span className="separator"> · </span>
               </span>
-              <a href="mailto:developer@jakepalanca.com" className="command-link email-box">email</a>
+              <a href="mailto:developer@jakepalanca.com" className="command-link email-box link-yellow">email</a>
             </div>
           </div>
         </div>
@@ -94,6 +94,35 @@ const Terminal = () => {
               </div>
               <div className="project-text project-tech">
                 <span className="project-arrow">⟡</span> <span className="accent-cyan">js injection</span>, <span className="accent-cyan">webkit</span>, <span className="accent-cyan">vlckit</span>, <span className="accent-cyan">swiftui</span>, <span className="accent-cyan">airplay</span>, <span className="accent-cyan">cast sdk</span>.
+              </div>
+            </div>
+          </div>
+
+          <div className="project-item">
+            <div>
+              <div className="project-title-row">
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px' }}>
+                  <span className="project-name accent-yellow">ai minecraft builder</span>
+                  <a
+                    href="https://github.com/jakepalanca/ai-minecraft-builder"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="command-link"
+                  >
+                    github repo
+                  </a>
+                </div>
+                <span className="project-meta">
+                  <span className="project-type">{'/* team hackathon project */'}</span>
+                </span>
+              </div>
+            </div>
+            <div className="project-description">
+              <div className="project-text">
+                serverless pipeline for generating textured 3d meshes from images using hunyuan3d 2.1 on sagemaker, with lambda-orchestrated jobs and one-click cloudformation deployment.
+              </div>
+              <div className="project-text project-tech">
+                <span className="project-arrow">⟡</span> <span className="accent-cyan">sagemaker</span>, <span className="accent-cyan">hunyuan3d</span>, <span className="accent-cyan">lambda</span>, <span className="accent-cyan">s3</span>, <span className="accent-cyan">cloudformation</span>, <span className="accent-cyan">python</span>.
               </div>
             </div>
           </div>
@@ -180,36 +209,39 @@ const Terminal = () => {
       ),
     },
     {
-      command: 'tree ~/skills/',
+      command: 'tree ./skills/',
       output: (
         <div className="cli-list">
-          <TreeLine treeChar="├── " isLast={false}>
+          <TreeLine treeChar="" isLast={false}>
+            <span className="directory-label">./skills/</span>
+          </TreeLine>
+          <TreeLine treeChar="├── " isNested={true} isLast={false}>
             <span className="directory-label">languages/</span>
             <span className="skill-items-inline"> (java, javascript, swift, python)</span>
           </TreeLine>
-          <TreeLine treeChar="├── " isLast={false}>
+          <TreeLine treeChar="├── " isNested={true} isLast={false}>
             <span className="directory-label">frameworks/</span>
             <span className="skill-items-inline"> (spring, react, next.js, swiftui)</span>
           </TreeLine>
-          <TreeLine treeChar="├── " isLast={false}>
+          <TreeLine treeChar="├── " isNested={true} isLast={false}>
             <span className="directory-label">databases/</span>
             <span className="skill-items-inline"> (mysql, mongodb)</span>
           </TreeLine>
-          <TreeLine treeChar="├── " isLast={false}>
+          <TreeLine treeChar="├── " isNested={true} isLast={false}>
             <span className="directory-label">testing/</span>
             <span className="skill-items-inline"> (junit, xctest, mockito)</span>
           </TreeLine>
-          <TreeLine treeChar="└── " isLast={true}>
+          <TreeLine treeChar="└── " isNested={true} isLast={true}>
             <span className="directory-label">tools/</span>
-            <span className="skill-items-inline"> (git, docker, mysqlworkbench, mongodb atlas, postman)</span>
+            <span className="skill-items-inline"> (git, docker, mysqlworkbench, mongodb atlas)</span>
           </TreeLine>
-          <TreeLine treeChar="├── " isNested={true} isLast={false}>
+          <TreeLine treeChar="    ├── " isNested={true} isLast={false}>
             <span className="directory-label">build-tools/</span>
             <span className="skill-items-inline"> (maven, npm)</span>
           </TreeLine>
-          <TreeLine treeChar="└── " isNested={true} isLast={true}>
+          <TreeLine treeChar="    └── " isNested={true} isLast={true}>
             <span className="directory-label">aws/</span>
-            <span className="skill-items-inline"> (ec2, s3, dynamo db, cloudfront, route 53, lambda, api gateway)</span>
+            <span className="skill-items-inline"> (ec2, s3, dynamodb, cloudfront, sagemaker, lambda, api gateway)</span>
           </TreeLine>
         </div>
       ),

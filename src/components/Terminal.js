@@ -4,7 +4,7 @@ import TreeLine from './TreeLine';
 const Terminal = () => {
   const publicUrl = process.env.PUBLIC_URL || '';
   const timestamp = new Date().getTime();
-  const resumePath = publicUrl ? `${publicUrl}/resume.pdf?v=${timestamp}` : `/resume.pdf?v=${timestamp}`;
+  const resumePath = publicUrl ? `${publicUrl}/Jake_Palanca_Software_Developer_Resume.pdf?v=${timestamp}` : `/Jake_Palanca_Software_Developer_Resume.pdf?v=${timestamp}`;
   const sections = [
     {
       command: 'whoami --verbose',
@@ -30,10 +30,10 @@ const Terminal = () => {
               <span className="command-link-group">
                 <a
                   href={resumePath}
-                  download="resume.pdf"
+                  download="Jake_Palanca_Software_Developer_Resume.pdf"
                   className="command-link link-cyan"
                 >
-                  resume
+                  download resume
                 </a>
                 <span className="separator"> · </span>
               </span>
@@ -44,7 +44,7 @@ const Terminal = () => {
                   rel="noopener noreferrer"
                   className="command-link link-blue"
                 >
-                  github
+                  visit github
                 </a>
                 <span className="separator"> · </span>
               </span>
@@ -55,11 +55,11 @@ const Terminal = () => {
                   rel="noopener noreferrer"
                   className="command-link link-pink"
                 >
-                  linkedin
+                  visit linkedin
                 </a>
                 <span className="separator"> · </span>
               </span>
-              <a href="mailto:developer@jakepalanca.com" className="command-link email-box link-yellow">email</a>
+              <a href="mailto:developer@jakepalanca.com" className="command-link email-box link-yellow">email me</a>
             </div>
           </div>
         </div>

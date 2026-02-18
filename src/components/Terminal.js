@@ -4,7 +4,7 @@ import TreeLine from './TreeLine';
 const Terminal = () => {
   const publicUrl = process.env.PUBLIC_URL || '';
   const timestamp = new Date().getTime();
-  const resumePath = publicUrl ? `${publicUrl}/Jake_Palanca_Resume.pdf?v=${timestamp}` : `/Jake_Palanca_Resume.pdf?v=${timestamp}`;
+  const resumePath = publicUrl ? `${publicUrl}/resume.pdf?v=${timestamp}` : `/resume.pdf?v=${timestamp}`;
   const sections = [
     {
       command: 'whoami --verbose',
@@ -30,7 +30,7 @@ const Terminal = () => {
               <span className="command-link-group">
                 <a
                   href={resumePath}
-                  download="Jake_Palanca_Resume.pdf"
+                  download="resume.pdf"
                   className="command-link link-cyan"
                 >
                   resume

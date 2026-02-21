@@ -528,7 +528,7 @@ const Terminal = () => {
                   projectType={'/* personal project */'}
                   projectName="cast browser"
                   projectHref="https://castbrowser.com"
-                  projectLinkLabel="learn more"
+                  projectLinkLabel="landing page"
                   description="ongoing swiftui browser app with a wkwebview + js-injection pipeline that detects video streams, captures request metadata, and prepares on-device playback. integrated a local proxy + vlckit fallback and a unified airplay/google cast flow so protected streams can still play reliably."
                   tech={(
                     <>

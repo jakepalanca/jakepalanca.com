@@ -276,6 +276,12 @@ em {
   width: 100%;
 }
 
+@media (min-width: 769px) {
+  .about-links-grid {
+    gap: 0.2em 0.75em;
+  }
+}
+
 /* Gradient-colored links */
 .link-cyan { color: #00f5d4; }
 .link-blue { color: #00bbf9; }

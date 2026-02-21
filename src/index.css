@@ -9,6 +9,10 @@
 /* Global terminal styles */
 :root {
   --terminal-white: #ffffff;
+  --terminal-bg: #000000;
+  --terminal-muted: rgba(255, 255, 255, 0.45);
+  --terminal-subtle: rgba(255, 255, 255, 0.8);
+  --terminal-surface: rgba(255, 255, 255, 0.04);
 }
 
 body {
@@ -16,7 +20,7 @@ body {
   font-family: 'JetBrains Mono Local', 'SF Mono', 'Monaco', 'Menlo', 'Courier New', 'Consolas', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #000000;
+  background-color: var(--terminal-bg);
   color: var(--terminal-white);
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
@@ -63,7 +67,7 @@ code {
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #000000;
+    background-color: var(--terminal-bg);
     color: var(--terminal-white);
   }
 }

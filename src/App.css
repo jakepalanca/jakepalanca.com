@@ -855,6 +855,7 @@ em {
 .tree-line-grid {
   display: grid;
   grid-template-columns: auto 1fr;
+  align-items: start;
   margin: 0;
   padding: 0;
 }
@@ -881,6 +882,7 @@ em {
 
 .tree-content-block {
   min-width: 0;
+  align-self: start;
 }
 
 .directory-label {
@@ -1112,6 +1114,10 @@ em {
 
   .cli-list > .tree-nested {
     margin-left: 4ch;
+  }
+
+  .tree-char-cont {
+    display: none;
   }
 }
 

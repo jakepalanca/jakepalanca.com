@@ -51,7 +51,7 @@ body {
   font-family: 'JetBrains Mono Local', 'SF Mono', 'Monaco', 'Menlo', 'Courier New', 'Consolas', monospace;
   font-size: clamp(6px, 0.9vw, 12px);
   line-height: 1.05;
-  margin-bottom: var(--gap);
+/*margin-bottom: var(--gap);*/
   white-space: pre;
   overflow-x: visible;
   overflow-y: visible;
@@ -261,6 +261,8 @@ em {
   text-decoration: underline;
   font-weight: 600;
   white-space: nowrap;
+  justify-self: start;
+  width: fit-content;
 }
 
 .command-link-group {
@@ -272,13 +274,17 @@ em {
 .about-links-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.35em 1.2em;
+  gap: 0.35em 0.8em;
   width: 100%;
+}
+
+.about-links-grid .command-link {
+  text-transform: uppercase;
 }
 
 @media (min-width: 769px) {
   .about-links-grid {
-    gap: 0.2em 0.75em;
+    gap: 0.2em 0.5em;
   }
 }
 
@@ -310,6 +316,70 @@ em {
   color: #000000;
   background-color: #fee440;
   text-decoration: none;
+}
+
+/* Experience */
+.experience-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+  width: 100%;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75em 1.5em;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.experience-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+  min-width: 0;
+}
+
+.experience-title-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35em;
+  min-width: 0;
+}
+
+.experience-company {
+  display: inline;
+}
+
+.experience-company-note,
+.experience-role,
+.experience-dates {
+  color: var(--terminal-white);
+  opacity: 0.8;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.experience-company-note {
+  opacity: 0.55;
+}
+
+.experience-role {
+  font-weight: 600;
+}
+
+.experience-dates {
+  white-space: nowrap;
+  opacity: 0.65;
+}
+
+.experience-text {
+  color: var(--terminal-white);
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Projects */
@@ -850,14 +920,27 @@ em {
   flex-direction: column;
   gap: 0;
   font-family: 'JetBrains Mono Local', 'SF Mono', 'Monaco', 'Menlo', 'Courier New', 'Consolas', monospace;
+  line-height: inherit;
 }
 
 .tree-line-grid {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: start;
   margin: 0;
   padding: 0;
+}
+
+.tree-line-with-prefix {
+  column-gap: 0.35ch;
+}
+
+.tree-line-no-prefix {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.tree-line-no-prefix .tree-prefix {
+  display: none;
 }
 
 .tree-line-grid.tree-nested {
@@ -867,22 +950,26 @@ em {
 .tree-prefix {
   display: flex;
   flex-direction: column;
-  color: var(--terminal-white);
-  opacity: 0.7;
+  color: #cccccc;
   font-family: 'JetBrains Mono Local', 'SF Mono', 'Monaco', 'Menlo', 'Courier New', 'Consolas', monospace;
   white-space: pre;
 }
 
 .tree-char-main,
 .tree-char-cont {
-  color: var(--terminal-white);
-  opacity: 0.7;
+  display: block;
+  color: inherit;
   white-space: pre;
 }
 
 .tree-content-block {
   min-width: 0;
   align-self: start;
+}
+
+.tree-content-inline {
+  display: inline-block;
+  max-width: 100%;
 }
 
 .directory-label {
@@ -1116,8 +1203,19 @@ em {
     margin-left: 4ch;
   }
 
-  .tree-char-cont {
-    display: none;
+}
+
+@media (max-width: 480px) {
+  .terminal-container {
+    padding: 24px 16px;
+  }
+
+  .tree-line-grid.tree-nested {
+    margin-left: 2ch;
+  }
+
+  .about-links-grid {
+    grid-template-columns: 1fr;
   }
 }
 

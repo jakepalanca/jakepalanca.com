@@ -1,86 +1,84 @@
-import { useRef, useEffect, useState, useCallback } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
-const TreeLine = ({ treeChar, children, isNested = false, isLast = false }) => {
-  const containerRef = useRef(null);
+const getContinuationPrefix = (treeChar, isLast) => {
+  const branchIndex = treeChar.search(/[├└]/);
+
+  if (branchIndex < 0) return '';
+
+  const leadingPrefix = treeChar.slice(0, branchIndex);
+  return `${leadingPrefix}${isLast ? ' ' : '│'}   `;
+};
+
+const TreeLine = ({ treeChar = '', children, isNested = false, isLast = false }) => {
   const contentRef = useRef(null);
-  const [extraLines, setExtraLines] = useState(0);
+  const [lineCount, setLineCount] = useState(1);
+  const continuationPrefix = getContinuationPrefix(treeChar, isLast);
+  const hasPrefix = treeChar.length > 0;
 
   const measureLines = useCallback(() => {
-    if (!contentRef.current) return;
-    
-    const element = contentRef.current;
-    const computedStyle = getComputedStyle(element);
-    const lineHeight = parseFloat(computedStyle.lineHeight);
-    
-    if (isNaN(lineHeight) || lineHeight <= 0) return;
-    
-    // Get fresh measurement
-    const totalHeight = element.offsetHeight;
-    
-    if (totalHeight <= 0) return;
-    
-    const lines = Math.max(1, Math.round(totalHeight / lineHeight));
-    const newExtraLines = Math.max(0, lines - 1);
-    
-    setExtraLines(newExtraLines);
+    const contentElement = contentRef.current;
+
+    if (!contentElement) return;
+
+    const range = document.createRange();
+    range.selectNodeContents(contentElement);
+
+    const visibleRects = Array.from(range.getClientRects()).filter((rect) => (
+      rect.width > 0 && rect.height > 0
+    ));
+    const uniqueLineTops = [];
+
+    visibleRects.forEach((rect) => {
+      const hasMatchingLine = uniqueLineTops.some((top) => Math.abs(top - rect.top) < 1);
+
+      if (!hasMatchingLine) {
+        uniqueLineTops.push(rect.top);
+      }
+    });
+
+    setLineCount(Math.max(1, uniqueLineTops.length));
   }, []);
 
-  // Measure on mount and children change
   useEffect(() => {
-    const timer = requestAnimationFrame(measureLines);
-    return () => cancelAnimationFrame(timer);
-  }, [measureLines, children]);
+    const frameId = requestAnimationFrame(measureLines);
+    return () => cancelAnimationFrame(frameId);
+  }, [children, measureLines]);
 
-  // Window resize - force remeasure
   useEffect(() => {
+    const contentElement = contentRef.current;
+
+    if (!contentElement) return undefined;
+
     const handleResize = () => {
-      // Reset first to ensure state updates
-      setExtraLines(0);
-      // Then remeasure after layout updates
-      requestAnimationFrame(() => {
-        requestAnimationFrame(measureLines);
-      });
+      requestAnimationFrame(measureLines);
     };
 
+    const resizeObserver = new ResizeObserver(handleResize);
+    resizeObserver.observe(contentElement);
     window.addEventListener('resize', handleResize);
     window.addEventListener('orientationchange', handleResize);
+
     return () => {
+      resizeObserver.disconnect();
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('orientationchange', handleResize);
     };
   }, [measureLines]);
 
-  // ResizeObserver for container
-  useEffect(() => {
-    if (!containerRef.current) return;
-    
-    const observer = new ResizeObserver(() => {
-      setExtraLines(0);
-      requestAnimationFrame(() => {
-        requestAnimationFrame(measureLines);
-      });
-    });
-    
-    observer.observe(containerRef.current);
-    return () => observer.disconnect();
-  }, [measureLines]);
-
-  // Continuation character for wrapped lines
-  const continuationChar = isLast ? ' ' : '│';
-
   return (
-    <div 
-      className={`tree-line-grid ${isNested ? 'tree-nested' : ''}`}
-      ref={containerRef}
-    >
-      <div className="tree-prefix">
-        <span className="tree-char-main">{treeChar}</span>
-        {extraLines > 0 && Array.from({ length: extraLines }, (_, i) => (
-          <span key={i} className="tree-char-cont">{continuationChar}   </span>
-        ))}
-      </div>
-      <div className="tree-content-block" ref={contentRef}>
-        {children}
+    <div className={`tree-line-grid ${isNested ? 'tree-nested' : ''} ${hasPrefix ? 'tree-line-with-prefix' : 'tree-line-no-prefix'}`.trim()}>
+      {hasPrefix ? (
+        <div className="tree-prefix" aria-hidden="true">
+          <span className="tree-char-main">{treeChar}</span>
+          {Array.from({ length: Math.max(0, lineCount - 1) }, (_, index) => (
+            <span key={index} className="tree-char-cont">{continuationPrefix}</span>
+          ))}
+        </div>
+      ) : null}
+      <div className="tree-content-block">
+        <span className="tree-content-inline" ref={contentRef}>
+          {children}
+        </span>
       </div>
     </div>
   );

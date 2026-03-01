@@ -83,6 +83,32 @@ const ProjectInfoPanel = ({
   </div>
 );
 
+const ExperienceEntry = ({
+  company,
+  companyNote,
+  role,
+  dateRange,
+  description,
+  tech,
+}) => (
+  <div className="experience-card">
+    <div className="experience-header">
+      <div className="experience-title-group">
+        <div className="experience-title-line">
+          <span className="experience-company accent-yellow">{company}</span>
+          {companyNote ? <span className="experience-company-note">({companyNote})</span> : null}
+        </div>
+        <span className="experience-role">{role}</span>
+      </div>
+      <span className="experience-dates">{dateRange}</span>
+    </div>
+    <div className="experience-text">{description}</div>
+    <div className="experience-text project-tech">
+      <span className="project-arrow">⟡</span> {tech}
+    </div>
+  </div>
+);
+
 const ProjectImageSlider = ({
   projectName,
   mediaItems,
@@ -477,7 +503,7 @@ const Terminal = () => {
               <div className="personal-info">
                 <div className="info-line">
                   <span>
-                    i study <span className="accent-cyan">computer science</span> at the university of georgia, focus on <span className="accent-cyan">database management</span> with <span className="accent-cyan">java</span>, <span className="accent-cyan">spring</span>, and <span className="accent-cyan">mysql</span>, and build <span className="accent-cyan">swiftui</span> apps in my free time.
+                    I study <span className="accent-cyan">Computer Science</span> at the University of Georgia, with a focus on <span className="accent-cyan">Database Management</span> using <span className="accent-cyan">Java</span>, <span className="accent-cyan">Spring</span>, and <span className="accent-cyan">MySQL</span>, and I build <span className="accent-cyan">SwiftUI</span> apps in my free time.
                   </span>
                   <br />
                 </div>
@@ -488,7 +514,7 @@ const Terminal = () => {
                   download="Jake_Palanca_Software_Developer_Resume.pdf"
                   className="command-link link-cyan"
                 >
-                  download resume
+                  Download Resume
                 </a>
                 <a
                   href="https://github.com/jakepalanca"
@@ -496,7 +522,7 @@ const Terminal = () => {
                   rel="noopener noreferrer"
                   className="command-link link-blue"
                 >
-                  visit github
+                  Visit GitHub
                 </a>
                 <a
                   href="https://linkedin.com/in/jakepalanca"
@@ -504,10 +530,37 @@ const Terminal = () => {
                   rel="noopener noreferrer"
                   className="command-link link-pink"
                 >
-                  visit linkedin
+                  Visit LinkedIn
                 </a>
-                <a href="mailto:developer@jakepalanca.com" className="command-link email-box link-yellow">email me</a>
+                <a href="mailto:developer@jakepalanca.com" className="command-link email-box link-yellow">Email Me</a>
               </div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      command: 'cat ~/experience/one-page-thinking.md',
+      output: (
+        <div className="external-links-left">
+          <div className="command-item">
+            <div className="command-content">
+              <ExperienceEntry
+                company="One Page Thinking"
+                companyNote="Spring Internship"
+                role="Software and Content Developer"
+                dateRange="February 2026 - Present"
+                description={(
+                  <>
+                    Leading development of a cost-effective admin dashboard on <span className="accent-cyan">AWS</span> for secure file management, replacing a monolithic site and delivering <span className="accent-cyan">10x faster load times</span> with lower monthly costs. Building the frontend in <span className="accent-cyan">Next.js</span> with a backend powered by <span className="accent-cyan">Lambda</span>, <span className="accent-cyan">Cognito</span>, and <span className="accent-cyan">S3</span>, while architecting deployable infrastructure with <span className="accent-cyan">Terraform</span> and <span className="accent-cyan">CloudFormation</span> tested locally through <span className="accent-cyan">LocalStack</span> and shipped via <span className="accent-cyan">GitHub Actions</span>.
+                  </>
+                )}
+                tech={(
+                  <>
+                    <span className="accent-cyan">Next.js</span>, <span className="accent-cyan">AWS</span>, <span className="accent-cyan">Lambda</span>, <span className="accent-cyan">Cognito</span>, <span className="accent-cyan">S3</span>, <span className="accent-cyan">Terraform</span>, <span className="accent-cyan">CloudFormation</span>, <span className="accent-cyan">LocalStack</span>, <span className="accent-cyan">GitHub Actions</span>.
+                  </>
+                )}
+              />
             </div>
           </div>
         </div>
@@ -521,18 +574,22 @@ const Terminal = () => {
 
           <div className="project-item">
             {renderProjectImages(
-              'cast browser',
+              'Cast Browser',
               castMediaItems,
               (
                 <ProjectInfoPanel
-                  projectType={'/* personal project */'}
-                  projectName="cast browser"
+                  projectType={'/* Personal Project */'}
+                  projectName="Cast Browser"
                   projectHref="https://castbrowser.com"
-                  projectLinkLabel="landing page"
-                  description="ongoing swiftui browser app with a wkwebview + js-injection pipeline that detects video streams, captures request metadata, and prepares on-device playback. integrated a local proxy + vlckit fallback and a unified airplay/google cast flow so protected streams can still play reliably."
+                  projectLinkLabel="Landing Page"
+                  description={(
+                    <>
+                      Ongoing <span className="accent-cyan">SwiftUI</span> browser app with a <span className="accent-cyan">WKWebView</span> + <span className="accent-cyan">JS-injection</span> pipeline that detects video streams, captures request metadata, and prepares on-device playback. Integrated a local proxy + <span className="accent-cyan">VLCKit</span> fallback and a unified <span className="accent-cyan">AirPlay</span>/<span className="accent-cyan">Google Cast</span> flow so protected streams can still play reliably.
+                    </>
+                  )}
                   tech={(
                     <>
-                      <span className="accent-cyan">js injection</span>, <span className="accent-cyan">webkit</span>, <span className="accent-cyan">vlckit</span>, <span className="accent-cyan">swiftui</span>, <span className="accent-cyan">airplay</span>, <span className="accent-cyan">cast sdk</span>.
+                      <span className="accent-cyan">JS Injection</span>, <span className="accent-cyan">WebKit</span>, <span className="accent-cyan">VLCKit</span>, <span className="accent-cyan">SwiftUI</span>, <span className="accent-cyan">AirPlay</span>, <span className="accent-cyan">Cast SDK</span>.
                     </>
                   )}
                 />
@@ -545,18 +602,22 @@ const Terminal = () => {
 
           <div className="project-item">
             {renderProjectImages(
-              'ai minecraft builder',
+              'AI Minecraft Builder',
               aiMinecraftBuilderMediaItems,
               (
                 <ProjectInfoPanel
-                  projectType={'/* team hackathon project */'}
-                  projectName="ai minecraft builder"
+                  projectType={'/* Team Hackathon Project */'}
+                  projectName="AI Minecraft Builder"
                   projectHref="https://github.com/jakepalanca/ai-minecraft-builder"
-                  projectLinkLabel="github repo"
-                  description="team hackathon project that deployed hunyuan3d 2.1 on a cost-efficient sagemaker endpoint to generate textured meshes from one image and upload results to s3. architected lambda-based workers for orchestration and shipped cloudformation deployment with documentation so others can self-host."
+                  projectLinkLabel="GitHub Repo"
+                  description={(
+                    <>
+                      Team hackathon project that deployed <span className="accent-cyan">Hunyuan3D 2.1</span> on a cost-efficient <span className="accent-cyan">SageMaker</span> endpoint to generate textured meshes from one image and upload results to <span className="accent-cyan">S3</span>. Architected <span className="accent-cyan">Lambda</span>-based workers for orchestration and shipped <span className="accent-cyan">CloudFormation</span> deployment with documentation so others can self-host.
+                    </>
+                  )}
                   tech={(
                     <>
-                      <span className="accent-cyan">sagemaker</span>, <span className="accent-cyan">hunyuan3d</span>, <span className="accent-cyan">lambda</span>, <span className="accent-cyan">s3</span>, <span className="accent-cyan">cloudformation</span>, <span className="accent-cyan">python</span>.
+                      <span className="accent-cyan">SageMaker</span>, <span className="accent-cyan">Hunyuan3D</span>, <span className="accent-cyan">Lambda</span>, <span className="accent-cyan">S3</span>, <span className="accent-cyan">CloudFormation</span>, <span className="accent-cyan">Python</span>.
                     </>
                   )}
                 />
@@ -570,18 +631,22 @@ const Terminal = () => {
 
           <div className="project-item">
             {renderProjectImages(
-              'cinema booking website',
+              'Cinema Booking Website',
               cinemaMediaItems,
               (
                 <ProjectInfoPanel
-                  projectType={'/* class project */'}
-                  projectName="cinema booking website"
+                  projectType={'/* Class Project */'}
+                  projectName="Cinema Booking Website"
                   projectHref="https://github.com/jakepalanca/Cinema-E-Booking-System"
-                  projectLinkLabel="github repo"
-                  description="class full-stack cinema app built with spring boot rest apis and spring data jpa/hibernate for persistence, including seat selection, inventory holds, and admin workflows. implemented spring security + jwt authentication and additional field-level encryption/decryption for sensitive data protection."
+                  projectLinkLabel="GitHub Repo"
+                  description={(
+                    <>
+                      Class full-stack cinema app built with <span className="accent-cyan">Spring Boot</span> <span className="accent-cyan">REST APIs</span> and <span className="accent-cyan">Spring Data JPA</span>/<span className="accent-cyan">Hibernate</span> for persistence, including seat selection, inventory holds, and admin workflows. Implemented <span className="accent-cyan">Spring Security</span> + <span className="accent-cyan">JWT</span> authentication and additional field-level encryption/decryption for sensitive data protection.
+                    </>
+                  )}
                   tech={(
                     <>
-                      <span className="accent-cyan">java</span>, <span className="accent-cyan">spring</span>, <span className="accent-cyan">react</span>, <span className="accent-cyan">js</span>, <span className="accent-cyan">mysql</span>, <span className="accent-cyan">jpa</span>, <span className="accent-cyan">hibernate</span>, <span className="accent-cyan">jwt</span>.
+                      <span className="accent-cyan">Java</span>, <span className="accent-cyan">Spring</span>, <span className="accent-cyan">React</span>, <span className="accent-cyan">JavaScript</span>, <span className="accent-cyan">MySQL</span>, <span className="accent-cyan">JPA</span>, <span className="accent-cyan">Hibernate</span>, <span className="accent-cyan">JWT</span>.
                     </>
                   )}
                 />
@@ -593,18 +658,22 @@ const Terminal = () => {
 
           <div className="project-item">
             {renderProjectImages(
-              'archer bus tracker',
+              'Archer Bus Tracker',
               archerMediaItems,
               (
                 <ProjectInfoPanel
-                  projectType={'/* class project */'}
-                  projectName="archer bus tracker"
+                  projectType={'/* Class Project */'}
+                  projectName="Archer Bus Tracker"
                   projectHref="https://github.com/jakepalanca/Archer"
-                  projectLinkLabel="github repo"
-                  description="team project for csci 4300 built with next.js and mongodb, with responsive navigation, protected routes, and features like live route tracking plus saved/recent places. implemented core api routes and data models for bets, places, and transit data with nextauth-based authentication."
+                  projectLinkLabel="GitHub Repo"
+                  description={(
+                    <>
+                      Team project for <span className="accent-cyan">CSCI 4300</span> built with <span className="accent-cyan">Next.js</span> and <span className="accent-cyan">MongoDB</span>, with responsive navigation, protected routes, and features like live route tracking plus saved/recent places. Implemented core <span className="accent-cyan">API</span> routes and data models for bets, places, and transit data with <span className="accent-cyan">NextAuth</span>-based authentication.
+                    </>
+                  )}
                   tech={(
                     <>
-                      <span className="accent-cyan">next.js</span>, <span className="accent-cyan">js</span>, <span className="accent-cyan">mongodb</span>, <span className="accent-cyan">maps</span>, <span className="accent-cyan">auth</span>.
+                      <span className="accent-cyan">Next.js</span>, <span className="accent-cyan">JavaScript</span>, <span className="accent-cyan">MongoDB</span>, <span className="accent-cyan">Maps</span>, <span className="accent-cyan">Auth</span>.
                     </>
                   )}
                 />
@@ -629,7 +698,7 @@ const Terminal = () => {
           </TreeLine>
           <TreeLine treeChar="├── " isNested={true} isLast={false}>
             <span className="directory-label">frameworks/</span>
-            <span className="skill-items-inline"> (spring, react, next.js, swiftui)</span>
+            <span className="skill-items-inline"> (spring, hibernate, react, next.js, swiftui)</span>
           </TreeLine>
           <TreeLine treeChar="├── " isNested={true} isLast={false}>
             <span className="directory-label">databases/</span>
@@ -641,7 +710,7 @@ const Terminal = () => {
           </TreeLine>
           <TreeLine treeChar="└── " isNested={true} isLast={true}>
             <span className="directory-label">tools/</span>
-            <span className="skill-items-inline"> (git, docker, mysqlworkbench, mongodb atlas)</span>
+            <span className="skill-items-inline"> (git, docker, terraform, mysqlworkbench, mongodb atlas)</span>
           </TreeLine>
           <TreeLine treeChar="    ├── " isNested={true} isLast={false}>
             <span className="directory-label">build-tools/</span>
@@ -649,7 +718,7 @@ const Terminal = () => {
           </TreeLine>
           <TreeLine treeChar="    └── " isNested={true} isLast={true}>
             <span className="directory-label">aws/</span>
-            <span className="skill-items-inline"> (ec2, s3, dynamodb, cloudfront, sagemaker, lambda, api gateway)</span>
+            <span className="skill-items-inline"> (ec2, s3, dynamodb, cloudfront, sagemaker, lambda, api gateway, localstack)</span>
           </TreeLine>
         </div>
       ),

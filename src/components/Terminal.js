@@ -532,7 +532,7 @@ const Terminal = () => {
                 >
                   Visit LinkedIn
                 </a>
-                <a href="mailto:developer@jakepalanca.com" className="command-link email-box link-yellow">Email Me</a>
+                <a href="mailto:dev@jakepalanca.com" className="command-link email-box link-yellow">Email Me</a>
               </div>
             </div>
           </div>
